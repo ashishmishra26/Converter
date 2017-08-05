@@ -1,0 +1,28 @@
+{
+  "name": "converter",
+  "version": "0.0.1",
+  "description": "Number-to-string and vice versa conversion",
+  "main": "index.js",
+  "scripts": {
+    "test": "karma start karma.conf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashishmishra26/Converter.git"
+  },
+  "author": "Ashish Mishra",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ashishmishra26/Converter/issues"
+  },
+  "homepage": "https://github.com/ashishmishra26/Converter#readme",
+  "devDependencies": {
+    "jasmine": "^2.7.0",
+    "jasmine-core": "^2.7.0",
+    "karma": "^1.7.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-coverage": "^1.1.1",
+    "karma-firefox-launcher": "^1.0.1",
+    "karma-jasmine": "^1.1.0"
+  }
+}
