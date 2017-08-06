@@ -1,5 +1,4 @@
 var Convert = function(){
-this.input='125';
 this.one=["","one","two","three","four","five","six","seven","eight","nine"];
 this.digit=["ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen"];
 this.tens=["","","twenty","thirty","fourty","fifty","sixty","seventy","eighty","ninty"];
@@ -129,3 +128,100 @@ var output="";
 return output.trim();
 };
 
+Convert.prototype.findNum=function(input){
+var input2=input;
+var statement=input2.toLowerCase();
+var splitted_string=statement.split(" ");
+var output_array=[];
+console.log(splitted_string);
+for(var i=0;i<splitted_string.length;i++)
+    {
+         if(splitted_string[i]==="and"){
+               if((this.present(splitted_string[i-1]))&&(this.present(splitted_string[i+1]))){
+                   output_array.push("and");     
+               }
+         }else if(this.present(splitted_string[i])){
+         output_array.push(splitted_string[i]);  
+         }else{
+             output_array.push(" ");
+         }
+}
+        //console.log(output_array);
+       return this.toValues(output_array);
+        
+         //return output_array; 
+};
+
+Convert.prototype.present=function(string){
+    if(this.one.indexOf(string)>-1){
+        return true;
+    }
+    else if(this.digit.indexOf(string)>-1){
+        return true;
+    }
+    else if(this.tens.indexOf(string)>-1){
+        return true;
+    }
+    else if(this.beyond.indexOf(string)>-1){
+        return true;
+    }else if(string==="hundred"){
+        return true;
+    }else{
+        return false;
+    }
+
+};
+
+Convert.prototype.toValues=function(numobj){
+    var array=[];
+    console.log(numobj);
+    for(var i=0;i<numobj.length;i++)
+        {
+        if((numobj[i]===" ")&&(numobj[i-1]!=" ")&&(i!=0)&&(i!=numobj.length-1))
+            {
+              array.push(" ");
+            }else if(numobj[i]!==" ")
+            {
+            array.push(numobj[i]);
+            } 
+        }
+        
+    console.log(array);
+    console.log(typeof(array.join(" ")));
+    
+    var numeric_array=[],start_pos=0; 
+    var temp=[];
+        for(var j=0;j<array.length;)
+        {
+          if(array[j]===" ")
+            {
+                console.log(start_pos,j);
+                temp=[];
+                temp=array.slice(start_pos,j);
+                //console.log(temp.join(" "));
+                numeric_array.push(temp.join(" "));
+                start_pos=j+1;
+            }
+            
+           j++;
+        }
+        temp=array.slice(start_pos);
+        //console.log(temp);
+        numeric_array.push(temp.join(" "));
+        
+     return this.toNumber(numeric_array);
+       //console.log(numeric_array);
+};
+
+Convert.prototype.toNumber=function (input){
+    var numbers=[];   
+    for(i=0;i<input.length;i++)
+        {
+            numbers.push(this.string_to_number(input[i]));
+        }
+   return numbers;
+
+
+
+};
+//obj.findNum("there are nine hundred and two buses and five thousand trains");

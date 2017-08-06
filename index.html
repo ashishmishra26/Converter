@@ -1,18 +1,25 @@
 <html>
 <head>
 <title>Converter</title>
+<link rel="stylesheet" type="text/css" href="src/master.css">
 <script src="src/convert.js"></script>
 </head>
 <body>
-    <div>
-    <input type="text" id="text_one">
-    <button type="button" onclick=numberToString() id="button-1" value="convert to text" style="width:75px;height:20px"><br>
-    <p id="result" style="width:400px;"><p>    
+    <div id="main_div">
+        <h1 id="title">THE CONVERTER</h1>
+    <div id="div_one">
+    
+    <input type="text" id="text_one" class="textbox">
+    <button type="button" onclick=numberToString() id="button-1" class="btn" value="convert to text"><font>Number to String</font></button>
     </div>
-    <br><br>
-    <div style="margin:10px;"> 
-    <input type="text" id="text_two">
-    <button type="button" onclick=stringToNumber() id="button-1" style="width:75px;height:20px">
+    
+    <div id="div_two"> 
+    <input type="text" id="text_two" class="textbox">
+    <button type="button" onclick=stringToNumber() id="button-1" class="btn"><font>String to Number</font></button>
+    </div>
+    <div id="div_three">
+    <p id="result" style="width:400px;"><p>  
+    </div>
     </div>
 </body>  
 </html>
