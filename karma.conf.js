@@ -32,8 +32,7 @@ module.exports = function(config) {
     },
 
     coverageReporter: {
-      type:'text',
-      dir : 'coverage/'
+      dir :'coverage/'
     },
     // test results reporter to use
     // possible values: 'dots', 'progress'
