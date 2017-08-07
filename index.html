@@ -2,8 +2,14 @@
 
 <head>
     <title>Converter</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="src/master.css">
+    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&subset=cyrillic" rel="stylesheet">
+
     <script src="src/convert.js"></script>
+
 </head>
 
 <body>
@@ -16,11 +22,21 @@
 
         <div id="div_two">
             <input type="text" id="text_two" class="textbox">
-            <button type="button" onclick=con.stringToNumber() id="button-1" class="btn"><font>String to Number</font></button>
+            <button type="button" onclick=con.stringToNumber() id="button-2" class="btn"><font>String to Number</font></button>
         </div>
 
         <div id="div_three">
             <p id="result" style="width:400px;"></p>
+        </div>
+
+        <div id="div_four">
+            <input type="text" id="text_three" class="textbox">
+            <button type="button" onclick=con.replacer() id="button-3" class="btn"><font>Replace Word</font></button>
+        </div>
+
+        <div id="div_five">
+            <input type="text" id="text_four" class="textbox">
+            <button type="button" onclick=con.replacer_two() id="button-4" class="btn"><font>Replace Numeric</font></button>
         </div>
     </div>
 </body>

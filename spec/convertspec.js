@@ -113,7 +113,11 @@ describe("present test",function(){
         expect(obj.present("hundred")).toBe(true);
     });  
 });
-
+describe("replace test",function(){
+    it("should pass the test",function(){
+        expect(typeof(obj.replace("there are nine trains"))).toBe("string");
+    });  
+});
 
 
 });

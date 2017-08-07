@@ -10,36 +10,51 @@ body {
 #main_div {
     text-align: center;
     position: relative;
-    width: 900px;
-    height: 800px;
-    margin-left: 200px;
+    width: 1300px;
+    height: 900px;
+    margin-left: 20px;
 }
 
 #div_one {
     position: absolute;
-    margin-left: 100px;
+    margin-left: 20px;
     margin-top: 100px;
 }
 
 #div_two {
     margin-top: 160px;
     position: absolute;
-    margin-left: 500px;
+    margin-left: 400px;
     margin-top: 100px;
 }
-
 #div_three {
     position: absolute;
-    margin-top: 200px;
-    margin-left: 280px;
+    margin-top: 160px;
+    margin-left: 460px;
+}
+
+#div_four {
+    position: absolute;
+    margin-top: 120px;
+    margin-left:800px;
+}
+
+#div_five {
+    position: absolute;
+    margin-top: 80px;
+    margin-left:800px;
 }
 
 button:focus {
     outline: none;
 }
 
+.textbox:focus{
+    outline: none;
+}
+
 p {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto mono';
     font-size: 20px;
     font-weight: 900;
     color: white;
@@ -51,6 +66,7 @@ p {
     border: 1px solid burlywood;
     border-radius: 5px;
     font-size: 20px;
+    
 }
 
 .btn {
@@ -59,9 +75,11 @@ p {
     border: 2px solid black;
     border-radius: 10px;
 }
+button:active{
+    margin-top:2px;
+}
 
 font {
-    font-size: 15px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight: 900;
+    font-size: 14px;
+    font-family:'Alfa Slab One';
 }

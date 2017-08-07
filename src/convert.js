@@ -2,7 +2,7 @@ var Convert = function () {
     this.one = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
     this.digit = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"];
     this.tens = ["", "", "twenty", "thirty", "fourty", "fifty", "sixty", "seventy", "eighty", "ninty"];
-    this.beyond = [" ", "thousand", "million", "billion", "Trillion", "Quadrillion", "Quintillion", "Sextillion", "Septillion", "Octillion", "Nonillion", "Decillion", "Undecillion", "Duodecillion", "Tredecillion", "Quattuordecillion"];
+    this.beyond = [" ", "thousand", "million", "billion", "trillion", "quadrillion", "quintillion", "sextillion", "septillion", "octillion", "nonillion", "decillion", "undecillion", "duodecillion", "tredecillion", "quattuordecillion"];
 };
 var obj = new Convert();
 
@@ -10,15 +10,28 @@ var con = {};
 
 con.numberToString = function () {
     var number = document.getElementById("text_one").value;
-    document.getElementById("result").innerHTML = obj.number_to_string(number);
+    console.log(number);
+    document.getElementById("result").innerHTML = obj.NtS(number);
 };
 
 con.stringToNumber = function () {
     var string = document.getElementById("text_two").value;
-    document.getElementById("result").innerHTML = obj.string_to_number(string);
+    document.getElementById("result").innerHTML = obj.StN(string);
 };
 
+con.replacer = function () {
+    var string = document.getElementById("text_three").value;
+    document.getElementById("result").innerHTML = obj.replace(string);
+};
+con.replacer_two = function () {
+    var string = document.getElementById("text_four").value;
+    document.getElementById("result").innerHTML = obj.replace_two(string);
+}
+
 Convert.prototype.string_to_number = function (word) {
+    if (word === "") {
+        return " ";
+    }
     var word2 = word;
     var input = word2.toLowerCase();
     var sp = input.split(" ");
@@ -71,6 +84,19 @@ Convert.prototype.string_to_number = function (word) {
             multiply = 1000000000000;
             j--;
         }
+        if (sp[j] === "quadrillion") {
+            multiply = 1000000000000000;
+            j--;
+        }
+        if (sp[j] === "quintillion") {
+            multiply = 1000000000000000000;
+            j--;
+        }
+        if (sp[j] === "sextillion") {
+            multiply = 1000000000000000000000;
+            j--;
+        }
+
     }
     return sum;
 
@@ -95,6 +121,9 @@ Convert.prototype.convert_three = function (hplace, tplace, oplace) {
 Convert.prototype.number_to_string = function (number) {
     if (isNaN(number)) {
         return undefined;
+    }
+    if (number === "0") {
+        return "zero";
     }
     var temp = number,
         digit_array = [];
@@ -133,6 +162,23 @@ Convert.prototype.findNum = function (input) {
                 output_array.push("and");
             }
         } else if (this.present(splitted_string[i])) {
+            output_array.push(splitted_string[i]);
+        } else {
+            output_array.push(" ");
+        }
+    }
+    //console.log(output_array);
+    return output_array;
+};
+
+Convert.prototype.findNum_replacer = function (input) {
+    var input2 = input;
+    var statement = input2.toLowerCase();
+    var splitted_string = this.splitter(statement);
+    var output_array = [];
+    //console.log(splitted_string);
+    for (var i = 0; i < splitted_string.length; i++) {
+        if (this.present(splitted_string[i])) {
             output_array.push(splitted_string[i]);
         } else {
             output_array.push(" ");
@@ -204,3 +250,98 @@ Convert.prototype.splitter = function (string) {
     var arr = string.split(" ");
     return arr;
 };
+
+Convert.prototype.replace = function (string) {
+    var arr = this.findNum_replacer(string);
+    var array = string.split(" ");
+    var begin = 0,
+        end = 0,
+        lastbegin = 0,
+        count = 0;
+    console.log(arr);
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] === " ") {
+            if (count > 0) {
+                end = i - 1;
+            }
+            count = 0;
+        } else if ((arr[i] !== " ") && (arr[i - 1] === " ")) {
+            begin = i;
+            count++;
+
+        }
+        console.log(begin, end);
+
+        if (end >= begin && end !== 0 && begin !== 0 && (begin !== lastbegin)) {
+            var s = arr.slice(begin, end + 1);
+            var t = this.string_to_number(s.join(" "));
+            console.log(t);
+            array.splice(begin, ((end + 1) - begin), t);
+            console.log(array);
+            lastbegin = begin;
+        }
+
+
+    }
+    var st = array.toString();
+    var su = st.split(",");
+    var sv = su.join(" ");
+    return (sv);
+};
+
+Convert.prototype.StN = function (input) {
+    var s = obj.findNum(input);
+    var n = obj.toValues(s);
+    var t = obj.toNumber(n);
+    return t.join();
+};
+
+
+
+Convert.prototype.NtS = function (input) {
+    var temp = input;
+    var s = temp.split(" ");
+    console.log(s);
+    var t = [];
+    for (var i = 0; i < s.length; i++) {
+        if (!isNaN(parseInt(s[i]))) {
+            t.push(s[i]);
+        } else {
+            t.push(" ");
+        }
+    }
+    var u = [];
+    for (var j = 0; j < t.length; j++) {
+        if (t[j] !== " ") {
+            u.push(obj.number_to_string(t[j]));
+        }
+    }
+    return u.join();
+};
+
+Convert.prototype.replace_two = function (input) {
+    var temp = input;
+    var s = temp.split(" ");
+    var string = temp.split(" ");
+    console.log(s);
+    var t = [];
+    for (var i = 0; i < s.length; i++) {
+        if (!isNaN(parseInt(s[i]))) {
+            t.push(s[i]);
+        } else {
+            t.push(" ");
+        }
+    }
+
+    for (var j = 0; j < t.length; j++) {
+        if (t[j] !== " ") {
+            string.splice(j, 1, obj.number_to_string(t[j]));
+
+        }
+    }
+
+    return string.join(" ");
+
+};
+
+//console.log(obj.replace_two("there are 9 trains and 10 wathes"));
