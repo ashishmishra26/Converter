@@ -119,5 +119,20 @@ describe("replace test",function(){
     });  
 });
 
+describe("replace test",function(){
+    it("should pass the test",function(){
+        expect(typeof(obj.replace_two("83468984jgfiqgfiuqwgdiuu"))).toBe("string");
+    });  
+});
+
+describe("replace test",function(){
+    it("should pass the test",function(){
+        expect((obj.replace_another("the one the"))).toBe("the 1 the");
+    });
+    it("should pass the test",function(){
+        expect((obj.replace_another("the one hundred the"))).toBe("the 100 the");
+    });  
+});
 
 });
+
